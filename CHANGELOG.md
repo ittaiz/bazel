@@ -1,3 +1,45 @@
+## Release 0.3.0 (2016-06-03)
+
+```
+Baseline: 6c11b66
+```
+
+Incompatible changes:
+
+  - The --cwarn command line option is not supported anymore. Use
+    --copt instead.
+  - External runfiles will now be accessible only via their
+    .runfiles/repo/path/to/target path, not
+    .runfiles/workspace-name/external/repo/path/to/target.
+    If code still needs to use the legacy path, it can set
+    --legacy_external_runfiles
+    temporarily, but should transition to using the default location
+    as it is more portable (see
+    https://groups.google.com/d/msg/bazel-discuss/_Xo14sf7fHw/g7wdatTGBgAJ
+    for details).  The --legacy_external_runfiles option will be
+    removed for the next release.
+
+Important changes:
+
+  - Use singular form when appropriate in blaze's test result summary
+    message.
+  - Added supported for Android NDK revision 11
+  - --objc_generate_debug_symbols is now deprecated.
+  - swift_library now generates an Objective-C header for its @objc
+    interfaces.
+  - new_objc_provider can now set the USES_SWIFT flag.
+  - objc_framework now supports dynamic frameworks.
+  - Symlinks in zip files are now unzipped correctly by http_archive,
+    download_and_extract, etc.
+  - swift_library is now able to import framework rules such as
+    objc_framework.
+  - Adds "jre_deps" attribute to j2objc_library.
+  - Release apple_binary rule, for creating multi-architecture
+    ("fat") objc/cc binaries and libraries, targeting ios platforms.
+  - Aspects documentation added.
+  - The --ues_isystem_for_includes command line option is not
+    supported anymore.
+
 ## Release 0.2.3 (2016-05-10)
 
 ```
